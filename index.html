@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React: Getting Started</title>
+    <!-- importamos unos estilos -->
+    <!-- TODO: link base.css -->  
+  </head>
+  <body>
+     <div id="cabecera">
+    <p>
+      Si ves esto React <strong>no</strong> está funcionando.
+    </p>
+  </div>
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+     <script>
+    const div = React.DOM.div;
+    console.log(div);
+    const h2 = React.DOM.h2;
+    // console.log(h2);
+    const p = React.DOM.p;
+    // console.log(p);
+    const a = React.DOM.a;
+    // console.log(a);
+    const b = React.DOM.b;
+    // console.log(b);
+    const br = React.DOM.br;
+    // console.log(br);
+
+
+    function Cabecera(props) {
+      console.log(props);
+      const titulo = 'Saludo';
+
+      return div(null,
+        h2(null, titulo),
+        p(null,
+          "Hola ", b(null, props.saludo), ".", br(null),
+          "Un link? ", br(null),
+          a({href:"http://laboratoria.la"}, "Laboratoria"), "!"
+        )
+      );
+    }
+
+    ReactDOM.render(
+      Cabecera({ saludo: 'Mundo' }),
+      document.getElementById('cabecera')
+    );
+    // console.log( 'este es el render' +
+    //   Cabecera({ saludo: 'Mundo' }),
+    //   document.getElementById('cabecera')
+    // )
+  </script>  
+  </body>
+</html>

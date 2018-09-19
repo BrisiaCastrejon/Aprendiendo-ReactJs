@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React: Getting Started</title>
+    <!-- importamos unos estilos -->
+    <!-- TODO: link base.css -->  
+  </head>
+  <body>
+     
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+     <body>
+  <div id="timer">
+    <p>
+      Si ves esto React <strong>no</strong> está funcionando.
+    </p>
+  </div>
+
+  <script>
+    const div = React.DOM.div;
+    const h2 = React.DOM.h2;
+    const p = React.DOM.p;
+
+    function Timer(props) {
+     // console.log(props)
+      const transcurrido = Math.round(props.transcurrido  / 100);
+     // console.log(transcurrido)
+      const segundos = transcurrido / 10 + (transcurrido % 10 ? '' : '.0' );
+     // console.log(segundos)
+      const mensaje = 'React ha estado corriendo por ' + segundos + ' segundos.';
+     // console.log(mensaje)
+
+      const borderColor = transcurrido % 2 === 0 ? 'red' : 'blue';
+     // console.log(borderColor)
+      const containerStyle = {
+        border: '3px solid ' + borderColor,
+        padding: 10
+      };
+
+      return div({ style: containerStyle },
+        h2(null, "Timer"),
+        p(null, mensaje)
+      );
+    }
+
+    const start = new Date().getTime();
+    setInterval(function () {
+      ReactDOM.render(
+        Timer({ transcurrido: new Date().getTime() - start }),
+        document.getElementById('timer')
+      );
+      // console.log(ReactDOM.render(
+      //   Timer({ transcurrido: new Date().getTime() - start }),
+      //   document.getElementById('timer')
+      // ))
+    }, 50);
+  </script>
+</body>
+  </body>
+</html>
